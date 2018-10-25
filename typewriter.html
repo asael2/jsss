@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+  <title>Titulares</title>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 </head>
@@ -7,10 +8,11 @@
 
 <body>
 
-  <h1>Titulares</h1>
-  <p id="demo"></p>
+  <h1>Las Noticias</h1>
+  <h2>  <a href="#" id="demo" target="_blank"></a> </h2>
+  <hr>
 
-  <button onclick="cargar()">Click me</button>
+  <button id="cargador" onclick="cargar()">Titular aleatorio</button>
 
 
   <script>
@@ -20,20 +22,24 @@
     var i = 0;
     var texto = 'ABCDEFG';
     var speed = 50;
+    var enlace = "#"
 
     var urla = 'https://newsapi.org/v2/top-headlines?'+
       'country=co&'+
       'language=es&'+
       'apiKey=890ed3b022e44dedaae9d79d12a03426';
     
-      document.getElementById("demo").innerHTML = "";
+      
 
     $.ajax({
       url: urla,
       type: 'GET',
       success: function (res) {
-        
-        texto = res.articles[parseInt(Math.random(0, res.articles.length) * 10)].title;
+        let elNum = parseInt(Math.random(0, res.articles.length) * 10)
+        texto = res.articles[elNum].title;
+        enlace = res.articles[elNum].url;
+        $("#demo").attr("href", enlace);
+        document.getElementById("demo").innerHTML = "";
         typeWriter();
       }
     });
@@ -41,18 +47,15 @@
     
     function typeWriter() {
         if (i < texto.length) {
+          $("#cargador").hide();
           document.getElementById("demo").innerHTML += texto.charAt(i);
           i++;
           setTimeout(typeWriter, speed);
+        }else{
+          $("#cargador").show();
         }
       }
 
-      
-        
-      
-
-
-  // })
   }
   </script>
 
