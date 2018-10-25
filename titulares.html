@@ -14,11 +14,16 @@
 
   <button id="cargador" onclick="clasica()">Titular aleatorio</button>
   <script src="main.js"></script>
-  <script type="module">
-    import * as module from 'http://localhost:8000/promesas.js'
 
-    console.log(module) // Prints: Hi from the default export!
+  <script type="module">
+    import * as module from './promesas.js'
+    console.log(module.promesa()) // Carga la promesa
   </script>
 </body>
 
 </html>
+
+<!-- 
+$.getJSON( 'https://jsonplaceholder.typicode.com/todos/1', function( assessments ) {
+console.log(JSON.stringify(assessments, undefined, 2))
+}); -->
