@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+<html>
+
+<body>
+
+  <h1>Titulares</h1>
+  <p id="demo"></p>
+
+  <button onclick="cargar()">Click me</button>
+
+
+  <script>
+
+  function cargar() {
+
+    var i = 0;
+    var texto = 'ABCDEFG';
+    var speed = 50;
+
+    var urla = 'https://newsapi.org/v2/top-headlines?'+
+      'country=co&'+
+      'language=es&'+
+      'apiKey=890ed3b022e44dedaae9d79d12a03426';
+    
+      document.getElementById("demo").innerHTML = "";
+
+    $.ajax({
+      url: urla,
+      type: 'GET',
+      success: function (res) {
+        
+        texto = res.articles[parseInt(Math.random(0, res.articles.length) * 10)].title;
+        typeWriter();
+      }
+    });
+
+    
+    function typeWriter() {
+        if (i < texto.length) {
+          document.getElementById("demo").innerHTML += texto.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      
+        
+      
+
+
+  // })
+  }
+  </script>
+
+</body>
+
+</html>

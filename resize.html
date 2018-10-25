@@ -1,0 +1,23 @@
+<head>
+<meta charset=utf-8 />
+<title>Window Size : height and width</title>
+<style>
+#wh{border: 1px dotted red}
+</style>
+</head>
+<!-- Resize the window (here output panel) and see the result !-->
+<body onload="getSize()" onresize="getSize()">
+<div id="wh"> 
+<!-- Place height and width size here! --> 
+</div>
+<body>
+  <script>
+    function getSize() {
+        var w = document.documentElement.clientWidth;
+        var h = document.documentElement.clientHeight;
+
+        // put the result into a h1 tag
+        document.getElementById('wh').innerHTML = "<h1>Ancho: " + w + " Alto: " + h + "</h1>";
+      }
+  </script>
+</body>
