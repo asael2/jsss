@@ -21,7 +21,7 @@
 
     var i = 0;
     var texto = 'ABCDEFG';
-    var speed = 50;
+    var speed = 30;
     var enlace = "#"
 
     var urla = 'https://newsapi.org/v2/top-headlines?'+
@@ -35,7 +35,10 @@
       url: urla,
       type: 'GET',
       success: function (res) {
-        let elNum = parseInt(Math.random(0, res.articles.length) * 10)
+        console.log(res)
+        let elNum = parseInt(Math.random(0, res.articles.length) * 20)
+        console.log(elNum)
+
         texto = res.articles[elNum].title;
         enlace = res.articles[elNum].url;
         $("#demo").attr("href", enlace);
